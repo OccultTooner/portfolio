@@ -84,58 +84,52 @@
 *formsubmit checks
 * 
 */
-(function () {
-  "use strict";
+// (function () {
+//   "use strict";
 
-  let forms = document.querySelectorAll('.php-email-form');
+//   let forms = document.querySelectorAll('.php-email-form');
 
-  forms.forEach(function (e) {
-    e.addEventListener('submit', function (event) {
-      event.preventDefault();
+//   forms.forEach(function (e) {
+//     e.addEventListener('submit', function (event) {
+//       event.preventDefault();
 
-      let thisForm = this;
-      let action = thisForm.getAttribute('action');
+//       let thisForm = this;
+//       let action = thisForm.getAttribute('action');
 
-      thisForm.querySelector('.loading').classList.add('d-block');
-      thisForm.querySelector('.error-message').classList.remove('d-block');
-      thisForm.querySelector('.sent-message').classList.remove('d-block');
+//       thisForm.querySelector('.loading').classList.add('d-block');
+//       thisForm.querySelector('.error-message').classList.remove('d-block');
+//       thisForm.querySelector('.sent-message').classList.remove('d-block');
 
-      let formData = new FormData(thisForm);
+//       let formData = new FormData(thisForm);
 
 
-      form_submit(thisForm, action, formData);
+//       form_submit(thisForm, action, formData);
 
-    });
-  });
+//     });
+//   });
 
-  function form_submit(thisForm, action, formData) {
-    fetch(action, {
-      method: 'POST',
-      body: formData,
-      headers: { 'X-Requested-With': 'XMLHttpRequest' }
-    })
-      .then(response => {
-        return response.text();
-      })
-      .then(data => {
-        thisForm.querySelector('.loading').classList.remove('d-block');
-        display(thisForm, data);
-        console.log('what is data: ',data);
-        // if (data.trim() == 'OK') {
-        //   thisForm.querySelector('.sent-message').classList.add('d-block');
-        //   thisForm.reset();
-        // } else {
-        //   throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action);
-        // }
-      })
+//   function form_submit(thisForm, action, formData) {
+//     fetch(action, {
+//       method: 'POST',
+//       body: formData,
+//       headers: { 'X-Requested-With': 'XMLHttpRequest' }
+//     })
+//       .then(response => {
+//         return response.text();
+//       })
+//       .then(data => {
+//         thisForm.querySelector('.loading').classList.remove('d-block');
+//         display(thisForm, data);
+//         console.log('what is data: ',data);
+//       })
 
-  }
+//   }
 
-  function display(thisForm, error) {
-    thisForm.querySelector('.loading').classList.remove('d-block');
-    thisForm.querySelector('.error-message').innerHTML = error;
-    thisForm.querySelector('.error-message').classList.add('d-block');
-  }
+//   function display(thisForm, error) {
+//     thisForm.querySelector('.loading').classList.remove('d-block');
+//     thisForm.querySelector('.error-message').innerHTML = error;
+//     thisForm.querySelector('.error-message').classList.add('d-block');
+//   }
 
-})();
+// })();
 
