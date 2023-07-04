@@ -1114,3 +1114,8 @@ section {
 img {
   pointer-events: none;
 }
+
+iframe{
+  width: 70vw;
+  height: 60vh;
+}
